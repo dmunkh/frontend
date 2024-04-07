@@ -9,7 +9,17 @@ const Login = () => {
     const usenavigate=useNavigate();
 
     useEffect(()=>{
-sessionStorage.clear();
+        sessionStorage.clear();
+
+        fetch("https://9xz5rjl8ej.execute-api.us-east-1.amazonaws.com/production/users").then((res) => {
+            console.log(res);
+            return res.json();
+        }).then((resp) => {
+            listupdate(resp);
+        }).catch((err) => {
+            console.log(err.messsage)
+        });
+        
     },[]);
 
     const ProceedLogin = (e) => {
@@ -17,25 +27,31 @@ sessionStorage.clear();
         if (validate()) {
             ///implentation
             // console.log('proceed');
-            fetch("http://localhost:8000/user/" + username).then((res) => {
-                return res.json();
-            }).then((resp) => {
-                //console.log(resp)
-                if (Object.keys(resp).length === 0) {
-                    toast.error('Please Enter valid username');
-                } else {
-                    if (resp.password === password) {
-                        toast.success('Success');
-                        sessionStorage.setItem('username',username);
-                        sessionStorage.setItem('userrole',resp.role);
+
+            toast.success('Success');
+                        sessionStorage.setItem('username', 'admin');
+                        sessionStorage.setItem('userrole','role1');
                         usenavigate('/')
-                    }else{
-                        toast.error('Please Enter valid credentials');
-                    }
-                }
-            }).catch((err) => {
-                toast.error('Login Failed due to :' + err.message);
-            });
+                        
+            // fetch("http://localhost:8000/user/" + username).then((res) => {
+            //     return res.json();
+            // }).then((resp) => {
+            //     //console.log(resp)
+            //     if (Object.keys(resp).length === 0) {
+            //         toast.error('Please Enter valid username');
+            //     } else {
+            //         if (resp.password === password) {
+            //             toast.success('Success');
+            //             sessionStorage.setItem('username',username);
+            //             sessionStorage.setItem('userrole',resp.role);
+            //             usenavigate('/')
+            //         }else{
+            //             toast.error('Please Enter valid credentials');
+            //         }
+            //     }
+            // }).catch((err) => {
+            //     toast.error('Login Failed due to :' + err.message);
+            // });
         }
     }
 

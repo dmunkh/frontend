@@ -9,17 +9,14 @@ const Home = () => {
        
 
         // let jwttoken = sessionStorage.getItem('jwttoken');
-        // fetch("https://localhost:44308/Customer", {
-        //     headers: {
-        //         'Authorization': 'bearer ' + jwttoken
-        //     }
-        // }).then((res) => {
-        //     return res.json();
-        // }).then((resp) => {
-        //     listupdate(resp);
-        // }).catch((err) => {
-        //     console.log(err.messsage)
-        // });
+        fetch("https://9xz5rjl8ej.execute-api.us-east-1.amazonaws.com/production/users").then((res) => {
+            console.log(res);
+            return res.json();
+        }).then((resp) => {
+            listupdate(resp);
+        }).catch((err) => {
+            console.log(err.messsage)
+        });
 
     }, []);
 
