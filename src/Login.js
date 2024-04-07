@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 const Login = () => {
     const [username, usernameupdate] = useState('');
     const [password, passwordupdate] = useState('');
+    const [customerlist, listupdate] = useState(null);
 
     const usenavigate=useNavigate();
 
@@ -19,7 +20,7 @@ const Login = () => {
         }).catch((err) => {
             console.log(err.messsage)
         });
-        
+
     },[]);
 
     const ProceedLogin = (e) => {
