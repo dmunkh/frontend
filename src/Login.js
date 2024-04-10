@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import {React, useEffect, useState } from "react";
+import { Link, useNavigate  } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const Login = () => {
     const [username, usernameupdate] = useState('');
     const [password, passwordupdate] = useState('');
     const [customerlist, listupdate] = useState(null);
+
 
     const usenavigate=useNavigate();
 
@@ -24,6 +25,7 @@ const Login = () => {
     },[]);
 
     const ProceedLogin = (e) => {
+        console.log(e)
         e.preventDefault();
         if (validate()) {
             ///implentation
@@ -31,9 +33,9 @@ const Login = () => {
 
             toast.success('Success');
                         sessionStorage.setItem('username', 'admin');
-                        sessionStorage.setItem('userrole','role1');
-                        usenavigate('/')
-                        
+                        sessionStorage.setItem('userrole','role1');                        
+                        usenavigate('/home')
+                        console.log("home")
             // fetch("http://localhost:8000/user/" + username).then((res) => {
             //     return res.json();
             // }).then((resp) => {
@@ -77,7 +79,10 @@ const Login = () => {
                      toast.success('Success');
                      sessionStorage.setItem('username',username);
                      sessionStorage.setItem('jwttoken',resp.jwtToken);
-                   usenavigate('/')
+
+                     console.log(sessionStorage.getItem("username"))
+                   usenavigate('/home')
+                   console.log(sessionStorage.getItem("username"))
                 }
                 // if (Object.keys(resp).length === 0) {
                 //     toast.error('Please Enter valid username');

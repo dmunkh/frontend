@@ -1,32 +1,17 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import VerticalMenu from './components/menu'
 
-const Home = () => {
+const Goods = () => {
     const usenavigate = useNavigate();
     const [customerlist, listupdate] = useState(null);
-   
-    useEffect(() => {
-       
-
-        // let jwttoken = sessionStorage.getItem('jwttoken');
-        fetch("https://9xz5rjl8ej.execute-api.us-east-1.amazonaws.com/production/users").then((res) => {
-            console.log(res);
-            return res.json();
-        }).then((resp) => {
-            listupdate(resp);
-        }).catch((err) => {
-            console.log(err.messsage)
-        });
-
-    }, []);
-
+    
+    console.log(sessionStorage.getItem("username"))
+    
     return (
         <div>
-               <VerticalMenu />
-            <h1 className="text-center">Welcome to Nihira Techiees</h1>
+              
             <h1 className="text-3xl font-bold underline text-red-600">
-                Hello world!
+              Бараа жагсаалт
             </h1>
             {/* <table className="table table-bordered">
                 <thead>
@@ -56,4 +41,4 @@ const Home = () => {
     );
 }
 
-export default Home;
+export default Goods;
