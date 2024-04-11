@@ -1,19 +1,20 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Navbar from "../Navbar";
 
 const Goods = () => {
-    const usenavigate = useNavigate();
-    const [customerlist, listupdate] = useState(null);
-    
-    console.log(sessionStorage.getItem("username"))
-    
-    return (
-        <div>
-              
-            <h1 className="text-3xl font-bold underline text-red-600">
-              Бараа жагсаалт
-            </h1>
-            {/* <table className="table table-bordered">
+  const usenavigate = useNavigate();
+  const [customerlist, listupdate] = useState(null);
+
+  console.log(sessionStorage.getItem("username"));
+
+  return (
+    <div>
+      {/* <Navbar /> */}
+      <h1 className="text-3xl font-bold underline text-red-600">
+        Бараа жагсаалт
+      </h1>
+      {/* <table className="table table-bordered">
                 <thead>
                     <tr>
                         <td>Code</td>
@@ -37,8 +38,8 @@ const Goods = () => {
                 </tbody>
 
             </table> */}
-        </div>
-    );
-}
+    </div>
+  );
+};
 
 export default Goods;
