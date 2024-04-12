@@ -3,10 +3,18 @@ import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../Navbar";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
+import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
+import { DatePicker, Space } from "antd";
 
 const Company = () => {
   const usenavigate = useNavigate();
   const [customerlist, listupdate] = useState(null);
+  const currentDate = dayjs();
+
+  const dateFormat = "YYYY/MM/DD";
+  const weekFormat = "MM/DD";
+  const monthFormat = "YYYY/MM";
 
   console.log(sessionStorage.getItem("username"));
   const data = [
@@ -43,6 +51,7 @@ const Company = () => {
       <h1 className="text-3xl font-bold underline text-red-600">
         Бараа жагсаалт
       </h1>
+      <DatePicker defaultValue={currentDate} format={dateFormat} />
       <DataTable value={data} tableStyle={{ minWidth: "50rem" }}>
         <Column field="code" header="Code"></Column>
         <Column field="name" header="Name"></Column>
